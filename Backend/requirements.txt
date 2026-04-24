@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-multipart
+numpy
+pillow
+opencv-python
+torch
+torchvision
+segmentation-models-pytorch==0.3.3
+six

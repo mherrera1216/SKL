@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>SkyLens</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-icon">🛸</div>
+        <div class="brand-text">
+          <span class="brand-sky">SKY</span>
+          <span class="brand-lens">LENS</span>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#analizar">Analizar</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#capacidades">Capacidades</a>
+        <a href="#proyecto">Proyecto</a>
+      </div>
+
+      <a class="nav-cta" href="#analizar">🌿 Comenzar análisis</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="pill-top">🟢 IA · SOSTENIBILIDAD URBANA · ODS 11</div>
+
+        <h1 class="hero-title">
+          Ciudades más <span class="hl-green">verdes</span><br>
+          vistas desde el <span class="hl-blue">cielo</span>.
+        </h1>
+
+        <p class="hero-sub">
+          Sky Lens analiza imágenes aéreas de drones para identificar zonas urbanas con escasez vegetal y genera recomendaciones inteligentes para transformar tu ciudad en un espacio más sostenible.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToAnalyze(); openFilePicker();">🛸 Subir imagen aérea</button>
+          <a class="btn btn-ghost" href="#como">Ver cómo funciona ↓</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-val">92%</div>
+            <div class="metric-lbl">PRECISIÓN DEL MODELO</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">&lt;10s</div>
+            <div class="metric-lbl">TIEMPO DE ANÁLISIS</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">ODS 11</div>
+            <div class="metric-lbl">CIUDADES SOSTENIBLES</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA DEMO -->
+      <div class="hero-right">
+        <div class="demo-card">
+          <div class="demo-head">
+            <div class="demo-title">ANÁLISIS ACTIVO — BUCARAMANGA NORTE</div>
+            <span class="badge badge-green">● En vivo</span>
+          </div>
+
+          <div class="demo-img">
+            <img src="img/Bgafondo.png" alt="demo" onerror="this.style.display='none';" />
+            <div class="demo-chips">
+              <span class="chip chip-green">● Zona verde</span>
+              <span class="chip chip-amber">● Deficiente</span>
+              <span class="chip chip-red">● Crítica</span>
+            </div>
+          </div>
+
+          <div class="demo-kpis">
+            <div class="kpi">
+              <div class="kpi-val" style="color:var(--leaf-700)">23%</div>
+              <div class="kpi-lbl">VEGETACIÓN</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-val" style="color:var(--amber-600)">41%</div>
+              <div class="kpi-lbl">CONCRETO</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-val" style="color:#d92d20">Alto</div>
+              <div class="kpi-lbl">RIESGO TÉRMICO</div>
+            </div>
+          </div>
+
+          <div class="pb-list">
+            <div class="pb-row">
+              <div class="pb-left"><span class="pb-ic">🌿</span> Vegetación</div>
+              <div class="pb-track"><div class="pb-fill fill-green" id="pb-green"></div></div>
+              <div class="pb-right" style="color:var(--leaf-700);font-weight:700">23%</div>
+            </div>
+
+            <div class="pb-row">
+              <div class="pb-left"><span class="pb-ic">🧱</span> Concreto / Asfalto</div>
+              <div class="pb-track"><div class="pb-fill fill-amber" id="pb-amber"></div></div>
+              <div class="pb-right" style="color:var(--amber-700);font-weight:700">41%</div>
+            </div>
+
+            <div class="pb-row">
+              <div class="pb-left"><span class="pb-ic">🏢</span> Edificios / Estructuras</div>
+              <div class="pb-track"><div class="pb-fill fill-slate" id="pb-slate"></div></div>
+              <div class="pb-right" style="color:var(--slate-700);font-weight:700">36%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BANNER -->
+  <section class="stats-banner">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num" data-counter="70" data-suffix="%">0%</div>
+        <div class="stat-text">De emisiones globales de CO₂ vienen de ciudades</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num" data-counter="14.5" data-suffix="%">0%</div>
+        <div class="stat-text">Promedio de áreas verdes en zonas urbanas</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num" data-counter="54" data-suffix="%">0%</div>
+        <div class="stat-text">De la población mundial vive en ciudades hoy</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num" data-counter="6" data-suffix="B">0B</div>
+        <div class="stat-text">Personas en ciudades para 2050 (proyección ONU)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALIZAR -->
+  <section class="upload-section" id="analizar">
+    <div class="upload-inner">
+
+      <div class="section-eyebrow">Plataforma de análisis</div>
+      <h2 class="section-title">Sube tu imagen.<br>Obtén el diagnóstico.</h2>
+      <p class="section-desc">
+        Arrastra o selecciona cualquier imagen aérea — desde un dron o satélite —
+        y obtén en segundos la distribución vegetal de la zona con recomendaciones accionables.
+      </p>
+
+      <div class="upload-grid">
+
+        <!-- Izquierda: carga + preview + controles -->
+        <div class="upload-left">
+          <input id="fileInput" type="file" accept="image/*,.tif,.tiff,.webp" hidden>
+
+          <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Subir imagen aérea">
+            <div class="dz-icon">🛸</div>
+
+            <div class="dz-title" id="dzFileName">Arrastra tu imagen aquí</div>
+            <p class="dz-hint" id="dzHint">
+              o <strong>haz clic para seleccionar</strong><br>
+              Compatible con drones DJI, Parrot y cámaras satelitales
+            </p>
+
+            <div class="dz-formats">
+              <span class="fmt-tag">JPG</span>
+              <span class="fmt-tag">PNG</span>
+              <span class="fmt-tag">TIFF</span>
+              <span class="fmt-tag">GeoTIFF</span>
+              <span class="fmt-tag">WebP</span>
+            </div>
+
+            <!-- Controles de visualización (aparecen tras analizar) -->
+            <div class="view-switcher" id="viewSwitcher" hidden>
+              <div class="vs-tabs">
+                <button class="view-btn active" id="btnOverlay" type="button">Overlay</button>
+                <button class="view-btn" id="btnMask" type="button">Máscara</button>
+                <button class="view-btn" id="btnOriginal" type="button">Original</button>
+              </div>
+
+              <div class="vs-controls">
+                <div class="vs-row">
+                  <span class="vs-label">Intensidad</span>
+                  <input id="overlayOpacity" type="range" min="0" max="100" value="75">
+                  <span class="vs-value" id="overlayOpacityValue">75%</span>
+                </div>
+
+                <label class="vs-check">
+                  <input id="highlightToggle" type="checkbox" checked>
+                  Resaltar
+                </label>
+              </div>
+            </div>
+
+            <div class="dz-status" id="dzStatus" aria-live="polite"></div>
+
+            <!-- Preview -->
+            <div class="preview-wrap" id="previewWrap" hidden>
+              <div class="preview-stack" id="previewStack">
+                <img id="imgBase" class="preview-img base" alt="Imagen original">
+                <img id="imgOverlay" class="preview-img overlay" alt="Overlay IA">
+                <img id="imgMask" class="preview-img mask" alt="Máscara IA">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Derecha: resultados -->
+        <div class="result-col">
+
+          <div class="result-card">
+            <div class="result-head">
+              <div class="result-title">📊 Distribución de cobertura</div>
+              <span class="badge badge-red" id="zoneBadge">Zona crítica</span>
+            </div>
+
+            <div class="donut-wrap">
+              <div class="donut-chart" id="donutChart">
+                <div class="donut-center">
+                  <div class="donut-pct" id="donutPct">0%</div>
+                  <div class="donut-lbl">VERDE</div>
+                </div>
+              </div>
+
+              <div class="donut-legend">
+                <div class="dl">
+                  <span class="dot dot-g"></span>
+                  <span>Vegetación — <strong id="pctVeg">0%</strong></span>
+                </div>
+                <div class="dl">
+                  <span class="dot dot-y"></span>
+                  <span>Concreto / Asfalto — <strong id="pctPav">0%</strong></span>
+                </div>
+                <div class="dl">
+                  <span class="dot dot-s"></span>
+                  <span>Edificios / Estructuras — <strong id="pctStr">0%</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="result-head">
+              <div class="result-title">🤖 Recomendaciones IA</div>
+              <span class="pill" id="recoCount">0 acciones</span>
+            </div>
+            <div class="reco-list" id="recoList"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO -->
+  <section class="how" id="como">
+    <div class="wrap">
+      <div class="section-eyebrow">Flujo del sistema</div>
+      <h2 class="section-title">¿Cómo funciona SkyLens?</h2>
+      <p class="section-desc">Un pipeline simple y potente: carga → segmentación → métricas → recomendaciones.</p>
+
+      <div class="grid-3">
+        <div class="step-card">
+          <div class="card-top">
+            <div class="step-num">1</div>
+            <div class="card-ic">📤</div>
+          </div>
+          <h3>Carga</h3>
+          <p>Subes una imagen aérea (drone o satélite).</p>
+        </div>
+
+        <div class="step-card">
+          <div class="card-top">
+            <div class="step-num">2</div>
+            <div class="card-ic">🧠</div>
+          </div>
+          <h3>Segmentación</h3>
+          <p>El modelo identifica vegetación, vías y estructuras.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="card-top">
+            <div class="step-num">3</div>
+            <div class="card-ic">📊</div>
+          </div>
+          <h3>Diagnóstico</h3>
+          <p>Calcula porcentajes y propone acciones sostenibles.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="features" id="capacidades">
+    <div class="wrap">
+      <div class="section-eyebrow">Capacidades</div>
+      <h2 class="section-title">Lo que puedes obtener</h2>
+
+      <div class="grid-3">
+        <div class="feat-card">
+          <div class="feat-top">
+            <div class="feat-ic">🗺️</div>
+            <div>
+              <h3>Mapa de cobertura</h3>
+              <p>Visualiza rápidamente el estado del área.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feat-card">
+          <div class="feat-top">
+            <div class="feat-ic">📈</div>
+            <div>
+              <h3>Indicadores</h3>
+              <p>Distribución porcentual por clase.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feat-card">
+          <div class="feat-top">
+            <div class="feat-ic">💡</div>
+            <div>
+              <h3>Recomendaciones</h3>
+              <p>Acciones sugeridas para mejorar sostenibilidad.</p>
+            </div>
+          </div>
+        </div>
+  </section>
+
+  <!-- PROYECTO -->
+  <section class="project" id="proyecto">
+    <div class="wrap">
+      <div class="section-eyebrow">Proyecto</div>
+      <h2 class="section-title">SkyLens · IA para ODS 11</h2>
+      <p class="section-desc">Prototipo académico: segmentación semántica para diagnóstico urbano.</p>
+
+      <div class="grid-2">
+        <div class="r-card">
+          <h3>Objetivo</h3>
+          <p>Medir cobertura urbana y proponer mejoras sostenibles.</p>
+        </div>
+        <div class="r-card">
+          <h3>Modelo</h3>
+          <p>U-Net + EfficientNet (B0) entrenado con datasets de cobertura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>SkyLens · Demo local (Frontend + FastAPI)</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
